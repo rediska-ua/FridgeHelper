@@ -1,0 +1,14 @@
+<div class="category-card">
+  <div class="category-card-header" *ngIf="category !== undefined">
+    <img class="category-image" src="assets/img/categories/{{category.image}}" alt="Category Image"/>
+    <h3>{{ category.value }}</h3>
+  </div>
+  <mat-chip-listbox [multiple]="true">
+    <mat-chip-option *ngFor="let ingredient of ingredients | slice:0 : showCount; let i = index" [selected]="selectedIngredients.includes(ingredient.value)" (click)="toggleSelection(ingredient.value)">
+      {{ ingredient.value }}
+    </mat-chip-option>
+    <button *ngIf="showCount < ingredients.length" (click)="showMore()">
+      Show more...
+    </button>
+  </mat-chip-listbox>
+</div>

@@ -1,0 +1,90 @@
+<div class="edit-ingredient">
+  <div class="header-row">
+    <h4>Edit ingredient in your inventory</h4>
+    <span class="icon" [mat-dialog-close]="true"
+    ><mat-icon fontIcon="close" inline="true"></mat-icon
+    ></span>
+  </div>
+  <form [formGroup]="editProductForm" #form="ngForm" (ngSubmit)="onSubmit()">
+    <span class="text-danger list-unstyled mt-1" *ngIf="!!editProductError">{{
+      editProductError
+      }}</span>
+    <div class="form-group">
+      <label>Ingredient name</label>
+      <ng-select
+        [items]="allIngredients"
+        bindLabel="value"
+        bindValue="value"
+        [groupBy]="groupByFn"
+        [groupValue]="groupValueFn"
+        [multiple]="false"
+        appearance="outline"
+        formControlName="ingredient"
+        class="custom"
+        (ngModelChange)="onSelect()">
+        <ng-template ng-multi-label-tmp>
+
+        </ng-template>
+        <ng-template ng-optgroup-tmp let-item="item">
+          <span style="vertical-align: middle;">{{findCategoryValueName(item.value)}}</span>
+        </ng-template>
+        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+          <mat-icon *ngIf="!item$.selected">add</mat-icon>
+          <mat-icon *ngIf="item$.selected">check</mat-icon>
+          {{item.value}}
+        </ng-template>
+      </ng-select>
+      <ul class="text-danger list-unstyled mt-1">
+        <li *appValidationErrors="editProductForm; control: 'ingredient'; let err">
+          {{ err }}
+        </li>
+      </ul>
+    </div>
+    <div class="form-group">
+      <label>Category</label>
+      <span>{{selectedCategory}}</span>
+    </div>
+    <div class="form-group">
+      <label>Expiration Date</label>
+      <div class="date-picker">
+        <div class="form-control" (click)="openDatePicker()">
+          <span class="label">{{
+            editProductForm.controls["expirationDate"].value | date : "d MMM y"
+            }}</span>
+          <input
+            class="hidden"
+            matInput
+            [min]="minDate"
+            formControlName="expirationDate"
+            [matDatepicker]="picker"
+          />
+          <mat-datepicker-toggle matSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon>
+              <img
+                class="icon"
+                src="assets/icons/calendar.svg"
+                alt="Calendar"
+              />
+            </mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Price in UAH</label>
+      <input
+        class="form-control"
+        formControlName="price"
+        type="number"/>
+      <ul class="text-danger list-unstyled mt-1">
+        <li *appValidationErrors="editProductForm; control: 'price'; let err">
+          {{ err }}
+        </li>
+      </ul>
+    </div>
+    <button class="btn btn-primary" [disabled]="form.invalid">
+      Save changes
+    </button>
+  </form>
+</div>

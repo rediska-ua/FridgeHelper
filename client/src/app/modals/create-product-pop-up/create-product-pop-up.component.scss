@@ -1,0 +1,72 @@
+@import "../../../assets/styles/variables";
+
+.date-picker {
+  position: relative;
+  margin-bottom: 1.25rem;
+
+  .form-control {
+    background: $input-color;
+    cursor: pointer;
+    height: 2.5rem;
+    border: none;
+  }
+
+  .form-control:has(input.ng-dirty.ng-valid) {
+    border: 2px solid $green-color;
+  }
+}
+
+.custom {
+
+}
+
+.ng-input {
+  input {
+    margin-left: 20px;
+    margin-bottom: 5px;
+  }
+}
+
+.hidden {
+  visibility: hidden;
+  width: 0;
+  z-index: -1;
+}
+
+.mat-datepicker-toggle {
+  position: absolute;
+  top: -0.25rem;
+  right: 0;
+
+  .mat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon {
+    margin: auto;
+    width: 1.2rem;
+  }
+}
+
+mat-select {
+  background-color: $input-color;
+  border: none;
+  height: 2.5rem;
+  margin-bottom: 1.25rem;
+}
+
+mat-select:focus {
+  border: none;
+  background-color: $input-color;
+  box-shadow: none !important;
+}
+
+mat-select.ng-dirty.ng-valid {
+  border: 2px solid $green-color;
+}
+
+mat-option {
+  min-height: 2rem;
+}

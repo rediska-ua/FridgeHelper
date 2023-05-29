@@ -1,0 +1,25 @@
+<div class="recipe-card">
+  <div class="recipe-card-header">
+    <img src="{{recipe.image}}" alt="recipe-avatar" style="width: 100px; height: 100px">
+    <a href="{{recipe.url}}">{{ recipe.label }}</a>
+  </div>
+  <div class="recipe-card-info">
+    <span>From {{recipe.source}}</span>
+    <div class="recipe-card-cuisine">
+      <h6>Cuisine type:</h6>
+      <span *ngFor="let type of recipe.cuisineType">{{type}}</span>
+    </div>
+    <div class="recipe-card-calories">
+      <h6>Calories:</h6>
+      <span>{{ caloriesToShow }} / 100g</span>
+    </div>
+    <div class="recipe-card-match">
+      <h6>You selected: </h6>
+      <span>{{ matchNumber }} of {{recipe.ingredients.length}} ingredients</span>
+    </div>
+    <div class="recipe-card-time">
+      <mat-icon>access_time</mat-icon>
+      <span>{{recipe.totalTime === 0 ? 60 : recipe.totalTime}} min to cook</span>
+    </div>
+  </div>
+</div>

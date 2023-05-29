@@ -1,0 +1,98 @@
+<div class="additional-filters-container">
+  <div class="filter-row">
+    <div class="allergies">
+      <h6>Health filter</h6>
+      <ng-select
+        [items]="allergies"
+        bindLabel="name"
+        bindValue="name"
+        [multiple]="true"
+        appearance="outline"
+        (change)="changeAllergies($event)"
+        [(ngModel)]="selectedAllergies"
+        class="custom">
+        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+          <mat-icon *ngIf="!item$.selected">add</mat-icon>
+          <mat-icon *ngIf="item$.selected">check</mat-icon>
+          {{item}}
+        </ng-template>
+      </ng-select>
+    </div>
+    <div class="diets">
+      <h6>Diet filter</h6>
+      <ng-select
+        [items]="diets"
+        bindLabel="name"
+        bindValue="name"
+        [multiple]="true"
+        [(ngModel)]="selectedDiets"
+        (change)="changeDiets($event)"
+        appearance="outline"
+        class="custom">
+        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+          <mat-icon *ngIf="!item$.selected">add</mat-icon>
+          <mat-icon *ngIf="item$.selected">check</mat-icon>
+          {{item}}
+        </ng-template>
+      </ng-select>
+    </div>
+  </div>
+  <div class="filter-row">
+    <div class="cuisine">
+      <h6>Cuisine type filter</h6>
+      <ng-select
+        [items]="cuisineType"
+        bindLabel="name"
+        bindValue="name"
+        [multiple]="true"
+        [(ngModel)]="selectedCuisine"
+        (change)="changeCuisine($event)"
+        appearance="outline"
+        class="custom">
+        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+          <mat-icon *ngIf="!item$.selected">add</mat-icon>
+          <mat-icon *ngIf="item$.selected">check</mat-icon>
+          {{item}}
+        </ng-template>
+      </ng-select>
+    </div>
+    <div class="dish">
+      <h6>Dish type filter</h6>
+      <ng-select
+        [items]="dishType"
+        bindLabel="name"
+        bindValue="name"
+        [multiple]="true"
+        [(ngModel)]="selectedDishes"
+        (change)="changeDishes($event)"
+        appearance="outline"
+        class="custom">
+        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+          <mat-icon *ngIf="!item$.selected">add</mat-icon>
+          <mat-icon *ngIf="item$.selected">check</mat-icon>
+          {{item}}
+        </ng-template>
+      </ng-select>
+    </div>
+  </div>
+  <div class="filter-row">
+    <div class="meals">
+      <h6>Meal type filter</h6>
+      <ng-select
+        [items]="mealTypes"
+        bindLabel="name"
+        bindValue="name"
+        [multiple]="true"
+        [(ngModel)]="selectedMeals"
+        (change)="changeMeals($event)"
+        appearance="outline"
+        class="custom">
+        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+          <mat-icon *ngIf="!item$.selected">add</mat-icon>
+          <mat-icon *ngIf="item$.selected">check</mat-icon>
+          {{item}}
+        </ng-template>
+      </ng-select>
+    </div>
+  </div>
+</div>

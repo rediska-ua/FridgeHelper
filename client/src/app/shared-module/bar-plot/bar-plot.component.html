@@ -1,0 +1,28 @@
+<div class="statistics">
+  <span class="label">{{ viewModel.yAxisTitle }}</span>
+  <div class="chart-group">
+    <div class="y-axis">
+      <span *ngFor="let p of yAxis" class="label chart-label">{{ p }}</span>
+    </div>
+    <div class="chart">
+      <div
+        *ngFor="let bar of viewModel?.dataSequence"
+        class="bar-group"
+        style="--height: {{ calcBarHeight(bar.value) }}%; width: 15%"
+      >
+        <div
+          class="{{classNameValue}}"
+          matTooltip="{{ viewModel.tooltipTitle }}: {{ bar.tooltipValue }}"
+          matTooltipPosition="above"
+          matTooltipClass="bar-info-tooltip"
+          matTooltipShowDelay="100"
+          matTooltipHideDelay="100"
+        ></div>
+        <span class="label chart-label x-val">{{ bar.barTitle }}</span>
+      </div>
+    </div>
+  </div>
+  <span class="label d-flex justify-content-end">{{
+    viewModel.xAxisTitle
+  }}</span>
+</div>

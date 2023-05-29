@@ -1,0 +1,50 @@
+.additional-filters-container {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 30px;
+  text-align: left;
+
+  border-radius: 15px;
+
+  padding: 30px;
+
+  .allergies, .cuisine, .meals {
+    width: 50%;
+  }
+
+  .diets, .dish {
+    margin-left: 30px;
+    width: 50%;
+  }
+
+  .ng-select-container {
+    border: 1px solid black !important;
+  }
+}
+
+
+.filter-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+
+@media (max-width: 1400px) {
+  .filter-row {
+    flex-direction: column;
+  }
+
+  .allergies, .cuisine, .meals {
+    width: 100% !important;
+  }
+
+  .diets, .dish {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+}

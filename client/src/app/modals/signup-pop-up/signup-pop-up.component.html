@@ -1,0 +1,94 @@
+<div class="sign-up-container">
+  <div class="header-row">
+    <h4>Sign up to FridgeHelper</h4>
+    <span class="icon" [mat-dialog-close]="true"
+      ><mat-icon fontIcon="close" inline="true"></mat-icon
+    ></span>
+  </div>
+  <p>
+    <span>Do you already have an account?</span><a (click)="onSignIn()">Sign in</a>
+  </p>
+  <form
+    [formGroup]="signUpForm"
+    #form="ngForm"
+    (ngSubmit)="onSubmit()"
+    (reset)="resetForm()"
+  >
+    <ul
+      class="text-danger list-unstyled mt-1"
+      *ngIf="!signupInfoResult?.success && signupInfoResult?.errors?.length"
+    >
+      <li *ngFor="let error of signupInfoResult?.errors">
+        {{ error }}
+      </li>
+    </ul>
+    <div class="form-group">
+      <label>Enter your name</label>
+      <input class="form-control" formControlName="name" />
+      <ul class="text-danger list-unstyled mt-1">
+        <li *appValidationErrors="signUpForm; control: 'name'; let err">
+          {{ err }}
+        </li>
+      </ul>
+    </div>
+    <div class="form-group">
+      <label>Enter your email</label>
+      <input class="form-control" formControlName="email" />
+      <ul class="text-danger list-unstyled mt-1">
+        <li *appValidationErrors="signUpForm; control: 'email'; let err">
+          {{ err }}
+        </li>
+      </ul>
+    </div>
+    <div class="form-group">
+      <label>Enter your password</label>
+      <input class="form-control" formControlName="password" type="password" />
+      <ul class="text-danger list-unstyled mt-1">
+        <li *appValidationErrors="signUpForm; control: 'password'; let err">
+          {{ err }}
+        </li>
+      </ul>
+    </div>
+    <div class="form-group">
+      <label>Enter your password one more time to confirm</label>
+      <input
+        class="form-control"
+        formControlName="confirmPassword"
+        type="password"
+      />
+      <ul class="text-danger list-unstyled mt-1">
+        <li
+          *appValidationErrors="signUpForm; control: 'confirmPassword'; let err"
+        >
+          {{ err }}
+        </li>
+      </ul>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input checkbox-green"
+        formControlName="agreement"
+        type="checkbox"
+      />
+      <label class="form-check-label"
+        >By creating an account you agree to the Terms of Service and Conditions
+        and Privacy Policy</label
+      >
+      <ul class="text-danger list-unstyled mt-1">
+        <li *appValidationErrors="signUpForm; control: 'agreement'; let err">
+          {{ err }}
+        </li>
+      </ul>
+    </div>
+    <button class="btn btn-primary" [disabled]="form.invalid">Sign up</button>
+  </form>
+  <div class="divider">
+    <hr />
+    <span>or</span>
+    <hr />
+  </div>
+  <button (click)="signUpViaGoogle()" class="btn btn-primary">
+    <img class="google" src="./assets/img/google.png"  alt="googleSignUp"/>
+    <span>Sign up with Google</span>
+  </button>
+</div>

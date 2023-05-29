@@ -1,0 +1,34 @@
+.mat-card-avatar {
+  background-size: cover;
+}
+
+.mat-mdc-card {
+  background-color: #A4DBC8 !important;
+  padding: 5px !important;
+  cursor: pointer;
+
+  p {
+    margin: 0 !important;
+  }
+
+  .p-hazard {
+    color: #FF2E2E !important;
+  }
+
+  .p-warning {
+    color: #D18700 !important;
+  }
+
+  .mat-mdc-card-actions {
+    justify-content: flex-end;
+  }
+
+  .mat-mdc-card-header {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  button.remove-btn {
+    text-align: center !important;
+  }
+}

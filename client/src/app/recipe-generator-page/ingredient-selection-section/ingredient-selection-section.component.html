@@ -1,0 +1,90 @@
+<div class="ingredient-section">
+  <div class="ingredient-section-wrapper">
+    <div class="all-ingredients">
+      <div class="form-group">
+        <input
+          class="form-control"
+          [(ngModel)]="searchText"
+          placeholder="Search ingredient"
+          autocomplete="off"
+          (input)="filterIngredients()"
+        >
+      </div>
+      <app-category-card *ngFor="let category of allFilteredCategories"
+                         [category]="category"
+                         [ingredients]="findIngedientsByCategory(category.value, searchText.toLocaleLowerCase())"
+                         [selectedIngredients]="selectedIngredients"
+                         (newItemEvent)="toggleSelection($event)"
+                         [searchString]="searchText.toLocaleLowerCase()"
+      >
+      </app-category-card>
+      </div>
+      <div class="ingredients-form">
+        <h2>Choose some additional filters if needed</h2>
+        <app-additional-filters-section
+          [diets]="diets"
+          [allergies]="allergies"
+          [mealTypes]="mealTypes"
+          [dishType]="dishTypes"
+          [cuisineType]="cuisineTypes"
+          [isLogged]="isLoggedIn"
+          [(selectedAllergies)]="selectedAllergies"
+          [(selectedDiets)]="selectedDiets"
+          [(selectedDishes)]="selectedDishes"
+          [(selectedMeals)]="selectedMeals"
+          [(selectedCuisine)]="selectedCuisine"
+        ></app-additional-filters-section>
+        <div>
+          <div class="selected-ingredients">
+            <h2>Here is your choice</h2>
+            <div class="selected-ingredients-wrapper">
+              <mat-chip-listbox [multiple]="true">
+                <mat-chip-option *ngFor="let ingredient of selectedIngredients" [selected]="selectedIngredients.includes(ingredient)" (click)="removeFromSelected(ingredient)">
+                  {{ ingredient }}
+                </mat-chip-option>
+              </mat-chip-listbox>
+            </div>
+          </div>
+
+          <div class="search-ingredients">
+            <ng-select
+              [items]="allIngredients"
+              bindLabel="value"
+              bindValue="value"
+              [groupBy]="groupByFn"
+              [groupValue]="groupValueFn"
+              [multiple]="true"
+              appearance="outline"
+              [(ngModel)]="selectedIngredients"
+              class="custom">
+              <ng-template ng-multi-label-tmp>
+
+              </ng-template>
+              <ng-template ng-optgroup-tmp let-item="item">
+                <span style="vertical-align: middle;">{{findCategoryValueName(item.value)}}</span>
+              </ng-template>
+              <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                <mat-icon *ngIf="!item$.selected">add</mat-icon>
+                <mat-icon *ngIf="item$.selected">check</mat-icon>
+                {{item.value}}
+              </ng-template>
+            </ng-select>
+            <span class="error-msg-empty-ingredients" *ngIf="selectedError">There is no ingredients selected</span>
+            <button class="btn btn-outline-primary" (click)="sendRequest()">
+              <span>Search</span>
+              <mat-icon>search</mat-icon>
+            </button>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+

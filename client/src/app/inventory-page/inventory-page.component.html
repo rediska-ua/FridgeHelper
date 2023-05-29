@@ -1,0 +1,25 @@
+<div class="inventory-container">
+  <h1>The list of products in your inventory</h1>
+  <div class="product-grid">
+    <app-product-card *ngFor="let product of products"
+                      [product]="product"
+                      [allCategories]="allCategories"
+                      [allIngredients]="allIngredients"
+                      (click)="chooseForSearch(product)"></app-product-card>
+    <div class="btn-add-container">
+      <button mat-fab (click)="addProduct()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="section-selected-ingredients">
+    <h1>Chosen for search</h1>
+    <div class="chosen-for-search-ingredients">
+      <div class="selected-ingredients-inventory" *ngFor="let ingredient of chooseForSearchList">
+        <span>{{ingredient}}</span>
+        <mat-icon (click)="removeFromList(ingredient)">close</mat-icon>
+      </div>
+    </div>
+    <button class="btn btn-primary btn-search" (click)="searchFromExistingIngredients()">Search for recipes</button>
+  </div>
+</div>

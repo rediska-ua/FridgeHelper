@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-lg">
+  <a class="navbar-brand btn btn-outline-danger" [routerLink]="['/']"
+    >FridgeHelper
+    <img class="google" src="./assets/img/fridge.png" style="width: 50px; height: 50px" alt="fridgeIcon"/>
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="fridgeNavbar"
+    aria-controls="fridgeNavbar"
+    [attr.aria-expanded]="!isCollapsed"
+    aria-label="Toogle navigation"
+    (click)="isCollapsed = !isCollapsed"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div
+    class="collapse navbar-collapse"
+    id="fridgeNavbar"
+    [collapse]="isCollapsed"
+  >
+    <div class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item" *ngIf="isLoggedIn && connected">
+        <a
+          class="nav-link btn btn-outline-danger"
+          [routerLink]="['/statistics']"
+          routerLinkActive="active-route"
+          >Statistics</a>
+      </li>
+      <li class="nav-item" *ngIf="isLoggedIn && connected">
+        <a
+          class="nav-link btn btn-outline-danger"
+          [routerLink]="['/inventory']"
+          routerLinkActive="active-route"
+        >Inventory</a>
+      </li>
+      <li class="nav-item" *ngIf="connected">
+        <a
+          class="nav-link btn btn-outline-danger"
+          [routerLink]="['/recipe-generator']"
+          routerLinkActive="active-route"
+        >Generate recipe</a>
+      </li>
+      <li class="nav-item" *ngIf="!isLoggedIn && connected">
+        <a class="nav-link btn btn-outline-danger" (click)="openLogin()"
+          >Login</a
+        >
+      </li>
+      <li class="nav-item nav-item-profile dropdown" *ngIf="isLoggedIn && connected">
+        <button id="dropdownMenuButton" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <img
+            src="assets/img/user.png"
+            alt="user" style="
+          height: 30px;
+          width: 30px;
+          filter: brightness(0) invert(1);"
+          ></button>
+        <mat-menu #menu="matMenu" class="dropdown-menu">
+          <a
+            mat-menu-item
+            [routerLink]="['/profile']"
+            routerLinkActive="active-route"
+          >Profile</a>
+          <a
+            mat-menu-item
+            (click)="onLogout()"
+          >Logout</a>
+        </mat-menu>
+      </li>
+    </div>
+  </div>
+</nav>

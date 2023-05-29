@@ -1,0 +1,44 @@
+.recipe-card-header {
+  text-align: center;
+  font-family: "DM Sans", serif;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #0e1318;
+    font-weight: bold;
+    font-size: 18px;
+  }
+}
+
+img {
+  box-shadow: 3px 3px 1px #ccc !important;
+}
+
+.recipe-card-info {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+
+  span {
+    font-size: 18px;
+  }
+}
+
+.recipe-card-cuisine, .recipe-card-calories, .recipe-card-match, .recipe-card-time {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+
+  h6 {
+    margin: 0 !important;
+    font-size: 18px !important;
+  }
+
+  span {
+    margin-left: 10px;
+  }
+}

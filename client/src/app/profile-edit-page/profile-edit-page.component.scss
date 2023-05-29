@@ -1,0 +1,25 @@
+.edit-profile-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 30px;
+  font-family: "DM Sans", serif;
+  background-color: #ACE1AF;
+  border-radius: 20px;
+
+  .mat-mdc-form-field {
+    margin-top: 25px;
+    width: 100%;
+  }
+
+  div.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: #8AC7DB !important;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  button {
+    margin-top: 25px;
+  }
+}

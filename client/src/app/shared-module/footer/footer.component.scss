@@ -1,0 +1,16 @@
+@import '../../../assets/styles/variables';
+
+
+footer {
+  background-color: $navbar-background-color;
+  color: $base-color !important;
+  font-family: $font-family !important;
+
+  .footer-container {
+    padding-top: 20px;
+  }
+
+  div.mt-3.div {
+    text-align: left;
+  }
+}

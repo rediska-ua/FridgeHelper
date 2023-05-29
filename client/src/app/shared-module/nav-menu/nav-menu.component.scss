@@ -1,0 +1,104 @@
+@import '../../../assets/styles/variables';
+
+div.navbar-collapse {
+    justify-content: flex-end;
+}
+
+
+nav.navbar.navbar-expand-lg {
+    font-family: $font-family;
+    background-color: $navbar-background-color;
+
+    a.navbar-brand {
+        font-size: 30px;
+        font-weight: 700;
+        color: $base-color;
+        line-height: 39px;
+        letter-spacing: normal;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 25px;
+    }
+
+    a.nav-link {
+        color: $base-color;
+        font-family: $font-family;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: normal;
+    }
+
+    a.nav-link.active-route {
+        text-decoration: underline;
+    }
+
+    a.btn-outline-danger {
+        border: 0px solid transparent;
+    }
+
+    a.btn-outline-danger:hover {
+        background-color: $hover-nav-color;
+        color: $background-color;
+    }
+
+    span.navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(204, 91, 83, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .navbar-toggler:focus,
+    .navbar-toggler:active,
+    .navbar-toggler-icon:focus {
+        outline: 5px solid $base-color;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 3px;
+    }
+
+    #profile-icon {
+      margin-left: 20px;
+    }
+
+  .mat-mdc-icon-button.mat-mdc-button-base {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+
+    :hover {
+      background-color: $hover-nav-color !important;
+    }
+
+    img:hover {
+      background-color: transparent;
+    }
+  }
+
+}
+
+@media (min-width: 1200px) {
+    nav.navbar.navbar-expand-lg {
+        padding-left: 118px;
+        padding-right: 143px;
+        align-items: flex-end;
+    }
+
+    a.navbar-brand {
+        margin-top: 10px;
+    }
+
+    div.navbar-collapse {
+        margin-bottom: 8px;
+    }
+
+    div.navbar-collapse a.nav-link {
+        margin-left: 52px;
+    }
+}
+
+

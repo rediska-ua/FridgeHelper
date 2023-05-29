@@ -1,0 +1,47 @@
+<div class="login">
+  <div class="header-row">
+    <h4>Sign in to FridgeHelper</h4>
+    <span class="icon" [mat-dialog-close]="true"
+      ><mat-icon fontIcon="close" inline="true"></mat-icon
+    ></span>
+  </div>
+  <p><span>Not registered yet?</span><a (click)="onSignUp()">Sign up</a></p>
+  <form
+    [formGroup]="loginForm"
+    #form="ngForm"
+    (ngSubmit)="onSubmit()"
+    (reset)="resetForm()"
+  >
+    <p class="text-danger mt-1" *ngIf="!loginResult?.success">
+      {{ loginResult.message }}
+    </p>
+    <div class="form-group">
+      <label>Your email</label>
+      <input class="form-control" formControlName="email" />
+      <ul class="text-danger list-unstyled mt-1">
+        <li *appValidationErrors="loginForm; control: 'email'; let err">
+          {{ err }}
+        </li>
+      </ul>
+    </div>
+    <div class="form-group">
+      <label>Your password</label>
+      <input class="form-control" formControlName="password" type="password" />
+      <ul class="text-danger list-unstyled mt-1">
+        <li *appValidationErrors="loginForm; control: 'password'; let err">
+          {{ err }}
+        </li>
+      </ul>
+    </div>
+    <button class="btn btn-primary" [disabled]="form.invalid">Sign In</button>
+  </form>
+  <div class="divider">
+    <hr />
+    <span>or</span>
+    <hr />
+  </div>
+  <button (click)="loginViaGoogle()" class="btn btn-primary">
+    <img class="google" src="./assets/img/google.png" />
+    <span>Sign in with Google</span>
+  </button>
+</div>

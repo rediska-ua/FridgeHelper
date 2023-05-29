@@ -1,0 +1,35 @@
+<div class="product-list-container">
+  <div class="product-list">
+    <div
+      *ngFor="
+        let product of isShowAllProducts
+          ? products
+          : (products | slice : 0 : initialCountOfProductsForShow)
+      "
+      class="product-item"
+    >
+      <span class="product-title">{{getIngredientName(product.ingredientId)}}</span>
+      <span class="product-price">{{product.price}}</span>
+    </div>
+  </div>
+  <div
+    *ngIf="products.length > initialCountOfProductsForShow"
+    class="d-flex justify-content-center"
+  >
+    <button
+      type="button"
+      class="show-all-products-button"
+      (click)="isShowAllProducts = !isShowAllProducts"
+    >
+      <span *ngIf="!isShowAllProducts">See all products</span>
+      <span *ngIf="isShowAllProducts">See less products</span>
+    </button>
+  </div>
+
+  <div class="d-flex justify-content-between general-time">
+    <span class="product-title">Total money spent for the day:</span>
+    <span class="product-total">{{
+      getTotalPrice()
+    }}</span>
+  </div>
+</div>

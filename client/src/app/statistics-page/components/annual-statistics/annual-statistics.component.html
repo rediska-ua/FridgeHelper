@@ -1,0 +1,48 @@
+<div class="container">
+  <h2 class="title">Your statistics for year</h2>
+  <div class="date-group">
+    <div class="control active-btn" (click)="dateInputLeftArrowClick()">
+      <img
+        class="icon"
+        src="assets/icons/left-arrow-active.svg"
+        alt="Left arrow icon"
+      />
+    </div>
+    <div class="date-input" (click)="openDatePicker()">
+      <span class="label">{{ selectedYear | date : "yyyy" }}</span>
+      <div class="date-picker">
+        <input
+          class="hidden"
+          matInput
+          [max]="maxDate"
+          [matDatepicker]="picker"
+          [(ngModel)]="selectedYear"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon>
+            <img class="icon" src="assets/icons/calendar.svg" alt="Calendar" />
+          </mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker
+          #picker
+          startView="multi-year"
+          (yearSelected)="yearSelected($event, picker)"
+        ></mat-datepicker>
+      </div>
+    </div>
+    <div
+      class="control {{ dateInputRightArrowState }}-btn"
+      (click)="dateInputRightArrowClick()"
+    >
+      <img
+        class="icon"
+        src="assets/icons/right-arrow-{{ dateInputRightArrowState }}.svg"
+        alt="Right arrow icon"
+      />
+    </div>
+  </div>
+  <div *ngIf="statisticsNotFound" class="text-danger list-unstyled mt-1">
+    No statistics found for the selected year.
+  </div>
+  <app-bar-plot [classNameValue]="'bar-month'" [viewModel]="barPlotVM"></app-bar-plot>
+</div>

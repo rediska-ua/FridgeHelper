@@ -1,0 +1,87 @@
+<div class="recipe-pop-up">
+  <div class="header-row">
+    <h2>{{recipeInfo.label}}</h2>
+    <div class="pop-up-control">
+      <mat-icon *ngIf="isLoggedIn && connected && !isInFavourites" class="heart" (click)="addToFavourites()">favorite_border</mat-icon>
+      <mat-icon *ngIf="isLoggedIn && connected && isInFavourites" class="heart" (click)="removeFromFavourites()">favorite</mat-icon>
+      <span class="icon" [mat-dialog-close]="true"
+      ><mat-icon fontIcon="close" inline="true"></mat-icon
+      ></span>
+    </div>
+  </div>
+  <div class="recipe-pop-up-body">
+    <div class="recipe-pop-up-column">
+      <div class="recipe-pop-up-row">
+        <div class="recipe-pop-up-image">
+          <img src="{{recipeInfo.image}}" alt="pop-up-image" style="width: 300px; height: 300px">
+        </div>
+        <div class="recipe-pop-up-mainInfo">
+          <span>From {{recipeInfo.source}}</span>
+          <div class="recipe-pop-up-cuisine">
+            <h4>Cuisine type:</h4>
+            <span *ngFor="let type of recipeInfo.cuisineType">{{type}}</span>
+          </div>
+          <div class="recipe-pop-up-calories">
+            <h4>Calories:</h4>
+            <span>{{ caloriesToShow }} / 100g</span>
+          </div>
+          <div class="recipe-pop-up-match">
+            <h4>You selected: </h4>
+            <span>{{ matchNumber }} of {{recipeInfo.ingredients.length}} ingredients</span>
+          </div>
+          <div class="recipe-pop-up-time">
+            <mat-icon>access_time</mat-icon>
+            <span>{{recipeInfo.totalTime === 0 ? 60 : recipeInfo.totalTime}} min to cook</span>
+          </div>
+          <div class="recipe-pop-up-fullLink">
+            <a href="{{recipeInfo.url}}">
+              <span>Link to the full recipe</span>
+              <mat-icon>share</mat-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-pop-up-row">
+        <div class="recipe-pop-up-description">
+          <h4>Description</h4>
+          <div class="recipe-pop-up-description-wrapper">
+            <span *ngFor="let item of recipeInfo.ingredientLines">{{item}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-pop-up-column">
+      <div class="recipe-pop-up-row">
+        <div class="recipe-pop-up-ingredients">
+          <h4>Ingredients</h4>
+          <div class="ingredient-tag-wrapper">
+            <div *ngFor="let ingredient of recipeInfo.ingredients" [class]="checkForPresence(ingredient.food) ? 'ingredient-tag-available' : 'ingredient-tag-unavailable'">
+              <span>{{ingredient.food}}</span>
+              <!--<mat-icon *ngIf="!checkForPresence(ingredient.food)">add</mat-icon>-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-pop-up-row">
+        <div class="recipe-pop-up-tags">
+          <div class="recipe-pop-up-diets">
+            <h4>Diet labels</h4>
+            <div class="recipe-pop-up-tag-wrapper">
+              <div *ngFor="let diet of recipeInfo.dietLabels" class="recipe-pop-up-tag">
+                <span>{{diet}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="recipe-pop-up-health">
+            <h4>Health labels</h4>
+            <div class="recipe-pop-up-tag-wrapper">
+              <div *ngFor="let health of recipeInfo.healthLabels" class="recipe-pop-up-tag">
+                <span>{{health}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

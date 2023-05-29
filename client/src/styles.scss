@@ -1,0 +1,199 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+@import "~@ng-select/ng-select/themes/material.theme.css";
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$pomodoro-primary: mat.define-palette(mat.$indigo-palette);
+$pomodoro-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$pomodoro-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$pomodoro-theme: mat.define-light-theme((
+  color: (
+    primary: $pomodoro-primary,
+    accent: $pomodoro-accent,
+    warn: $pomodoro-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($pomodoro-theme);
+
+/* You can add global styles to this file, and also import other style files */
+@import "@fontsource/dm-sans/latin.css";
+.mat-dialog-content {
+    max-height: 100% !important;
+    border-radius: 14px;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #F5F5DC }
+
+.bar-info-tooltip {
+  font-size: 12px;
+  margin-bottom: 5px;
+  overflow: initial;
+  position: relative;
+
+  &:after {
+    border-left: 0.5rem solid transparent;
+    border-right: 0.5rem solid transparent;
+    border-bottom: 0.5rem solid #0000009c;
+    bottom: -0.5rem;
+    content: '';
+    height: 0;
+    position: absolute;
+    right: calc(50% - 0.5rem);
+    transform: rotate(180deg);
+    width: 0;
+  }
+}
+
+
+ng-select.custom {
+
+  width: 100%;
+  border: none !important;
+
+  .ng-appearance-outline {
+    color: #0e1318 !important;
+  }
+
+  .ng-option-disabled {
+    font-weight: bold !important;
+    font-family: "DM Sans", serif;
+    color: #0e1318 !important;
+    border-bottom: 1px solid #0e1318;
+    margin-bottom: 10px;
+  }
+
+  .ng-dropdown-panel {
+    margin-top: 10px;
+    background-color: #CCCCFF !important;
+  }
+
+  .ng-option-marked {
+    color: white !important;
+    background-color:  #366BA1 !important;
+  }
+
+  .ng-option {
+    display: flex !important;
+    align-items: center !important;
+
+    mat-icon {
+      margin-right: 15px;
+    }
+  }
+
+
+}
+
+app-category-card mat-chip-option {
+  font-family: "DM Sans", serif;
+  background-color: #88B0D7 !important;
+
+  span {
+    color: black !important;
+  }
+
+}
+
+app-category-card mat-chip-option:hover {
+  font-family: "DM Sans", serif;
+  background-color:  #366BA1 !important;
+
+  span {
+    color: white !important;
+  }
+
+}
+
+app-category-card .mat-mdc-chip-selected{
+  background-color: #366BA1 !important;
+  span {
+    color: white !important;
+  }
+}
+
+app-category-card .mat-form-field .mat-input-element {
+    background-color: #CCCCFF;
+    border: 1px solid #AEA5BE;
+}
+
+.mat-mdc-paginator-outer-container {
+  background-color: #F0E68C;
+  font-family: "DM Sans", serif;
+  font-size: 20px;
+}
+
+div .mat-mdc-card {
+  background-color: #E9EAEC !important;
+  border: 1px solid #717999 !important;
+  border-radius: 15px !important;
+}
+
+.ng-select.ng-select-multiple.ng-select-disabled .ng-select-container .ng-value-container .ng-value {
+  color: white !important;
+  background-color: #717999;
+}
+
+.create-ingredient {
+  .ng-select .ng-select-container .ng-value-container .ng-input > input {
+    margin-left: 20px !important;
+    margin-bottom: 5px !important;
+  }
+}
+
+.user-preferences {
+  .ng-select-container {
+    border-bottom: 1px solid #0e1318;
+  }
+}
+
+.mat-mdc-menu-content {
+  background-color: #F5F5F5 !important;
+}
+
+.ng-arrow-wrapper {
+  display: none;
+}
+
+
+@import '/src/assets/styles/variables';
+.mat-calendar-body-selected {
+  color: #717999;
+  background-color: $base-color;
+}
+
+.mat-calendar-body-today.mat-calendar-body-selected {
+  box-shadow:  0 0 0 1px #717999;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: #777;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #cc5b53;
+}

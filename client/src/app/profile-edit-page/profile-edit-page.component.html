@@ -1,0 +1,115 @@
+<div class="edit-profile-container">
+  <h1>Edit Profile</h1>
+  <form
+    [formGroup]="profileEditForm"
+    (ngSubmit)="updateProfile()"
+  >
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput  formControlName="name" name="name">
+    </mat-form-field>
+    <div>
+      <h2>Preferences</h2>
+      <div>
+        <div class="filter-row">
+          <div class="allergies">
+            <h6>Health filter</h6>
+            <ng-select
+              formControlName="allergies"
+              [items]="allergies"
+              bindLabel="name"
+              bindValue="name"
+              [multiple]="true"
+              appearance="outline"
+              [clearable]="false"
+              class="custom">
+              <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                <mat-icon *ngIf="!item$.selected">add</mat-icon>
+                <mat-icon *ngIf="item$.selected">check</mat-icon>
+                {{item}}
+              </ng-template>
+            </ng-select>
+          </div>
+          <div class="diets">
+            <h6>Diet filter</h6>
+            <ng-select
+              formControlName="diets"
+              [items]="diets"
+              bindLabel="name"
+              bindValue="name"
+              [multiple]="true"
+              [clearable]="false"
+              appearance="outline"
+              class="custom">
+              <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                <mat-icon *ngIf="!item$.selected">add</mat-icon>
+                <mat-icon *ngIf="item$.selected">check</mat-icon>
+                {{item}}
+              </ng-template>
+            </ng-select>
+          </div>
+        </div>
+        <div class="filter-row">
+          <div class="cuisine">
+            <h6>Cuisine type filter</h6>
+            <ng-select
+              formControlName="cuisine"
+              [items]="cuisineType"
+              bindLabel="name"
+              bindValue="name"
+              [multiple]="true"
+              [clearable]="false"
+              appearance="outline"
+              class="custom">
+              <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                <mat-icon *ngIf="!item$.selected">add</mat-icon>
+                <mat-icon *ngIf="item$.selected">check</mat-icon>
+                {{item}}
+              </ng-template>
+            </ng-select>
+          </div>
+          <div class="dish">
+            <h6>Dish type filter</h6>
+            <ng-select
+              formControlName="dishes"
+              [items]="dishType"
+              bindLabel="name"
+              bindValue="name"
+              [multiple]="true"
+              [clearable]="false"
+              appearance="outline"
+              class="custom">
+              <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                <mat-icon *ngIf="!item$.selected">add</mat-icon>
+                <mat-icon *ngIf="item$.selected">check</mat-icon>
+                {{item}}
+              </ng-template>
+            </ng-select>
+          </div>
+        </div>
+        <div class="filter-row">
+          <div class="meals">
+            <h6>Meal type filter</h6>
+            <ng-select
+              formControlName="meals"
+              [items]="mealTypes"
+              bindLabel="name"
+              bindValue="name"
+              [multiple]="true"
+              [clearable]="false"
+              appearance="outline"
+              class="custom">
+              <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                <mat-icon *ngIf="!item$.selected">add</mat-icon>
+                <mat-icon *ngIf="item$.selected">check</mat-icon>
+                {{item}}
+              </ng-template>
+            </ng-select>
+          </div>
+        </div>
+      </div>
+      <mat-checkbox  formControlName="useDefault">Use default settings</mat-checkbox>
+    </div>
+    <button mat-raised-button color="primary" type="submit">Save Changes</button>
+  </form>
+</div>

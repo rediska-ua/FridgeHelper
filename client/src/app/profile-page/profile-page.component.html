@@ -1,0 +1,97 @@
+<div class="profile-container">
+  <div class="profile-info-wrapper">
+    <h1>Profile</h1>
+    <div class="personal-info">
+      <span class="personal-info-title">Name:</span>
+      <span>{{ user.name }}</span>
+    </div>
+    <div class="personal-info">
+      <span class="personal-info-title">Email:</span>
+      <span>{{ user.email }}</span>
+    </div>
+    <div class="user-preferences">
+      <h2>Preferences</h2>
+      <div>
+        <div class="filter-row">
+          <div class="allergies">
+            <h6>Health filter</h6>
+            <ng-select
+              [items]="selectedAllergies"
+              bindLabel="name"
+              [disabled]="true"
+              [multiple]="true"
+              [(ngModel)]="selectedAllergies"
+            >
+            </ng-select>
+          </div>
+          <div class="diets">
+            <h6>Diet filter</h6>
+            <ng-select
+              [items]="selectedDiets"
+              bindLabel="name"
+              [disabled]="true"
+              [multiple]="true"
+              [(ngModel)]="selectedDiets"
+            >
+            </ng-select>
+          </div>
+        </div>
+        <div class="filter-row">
+          <div class="cuisine">
+            <h6>Cuisine type filter</h6>
+            <ng-select
+              [items]="selectedCuisine"
+              bindLabel="name"
+              [disabled]="true"
+              [multiple]="true"
+              [(ngModel)]="selectedCuisine"
+            >
+            </ng-select>
+          </div>
+          <div class="dish">
+            <h6>Dish type filter</h6>
+            <ng-select
+              [items]="selectedDishes"
+              bindLabel="name"
+              [disabled]="true"
+              [multiple]="true"
+              [(ngModel)]="selectedDishes"
+            >
+            </ng-select>
+          </div>
+        </div>
+        <div class="filter-row">
+          <div class="meals">
+            <h6>Meal type filter</h6>
+            <ng-select
+              [items]="selectedMeals"
+              bindLabel="name"
+              [disabled]="true"
+              [multiple]="true"
+              [(ngModel)]="selectedMeals"
+            >
+            </ng-select>
+          </div>
+        </div>
+      </div>
+      <mat-checkbox [disabled]="true" [(ngModel)]="settings.useDefault"
+        >Set default preferences</mat-checkbox
+      >
+    </div>
+    <div class="button-wrapper">
+      <button mat-raised-button color="primary" (click)="editProfile()">
+        Edit Profile
+      </button>
+    </div>
+  </div>
+  <div class="saved-recipes">
+    <h2>Saved recipes</h2>
+    <div
+      *ngFor="let recipe of savedRecipes"
+      class="saved-recipe-item"
+    >
+      <span (click)="openFullRecipe(recipe)">{{ recipe.recipeTitle }}</span>
+      <mat-icon (click)="openConfirmDelete(recipe)">delete</mat-icon>
+    </div>
+  </div>
+</div>

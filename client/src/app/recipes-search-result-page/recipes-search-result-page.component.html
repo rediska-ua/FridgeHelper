@@ -1,0 +1,37 @@
+<div class="all-recipes-container">
+  <h2>Your search result</h2>
+  <!--<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+      <span>Redial</span>
+    </button>
+    <button mat-menu-item disabled>
+      <mat-icon>voicemail</mat-icon>
+      <span>Check voice mail</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>notifications_off</mat-icon>
+      <span>Disable alerts</span>
+    </button>
+  </mat-menu>
+ -->
+  <div class="recipe-result" *ngIf="recipes.length > 12">
+    <div class="recipes-grid">
+      <app-recipe-card *ngFor="let recipe of recipes | slice: (paginator.pageIndex * pageSize) : (paginator.pageIndex + 1) * pageSize"
+                       [recipe]="recipe.recipe"  [matchNumber]="recipe.matchNumber" (click)="openFull(recipe)"></app-recipe-card>
+    </div>
+    <mat-paginator #paginator
+                   [length]="count"
+                   [pageIndex]="pageIndex"
+                   [pageSize]="pageSize"
+                   aria-label="Select page"
+                   (page)="handlePageEvent($event)">
+    </mat-paginator>
+  </div>
+  <div *ngIf="recipes.length === 0">
+    <span >The search gave 0 results, try different ingredients or settings</span>
+  </div>
+</div>

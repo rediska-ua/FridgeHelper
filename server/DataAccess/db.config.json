@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "LocalDB": "Server=DESKTOP-MAX\\SQLEXPRESS; Database=FridgeHelper; Trusted_Connection=True; TrustServerCertificate=True; Connect Timeout=30"
+  }
+}

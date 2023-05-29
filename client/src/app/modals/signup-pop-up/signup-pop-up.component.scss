@@ -1,0 +1,10 @@
+@import '../../../assets/styles/variables';
+
+.sign-up-container form {
+    input.checkbox-green:checked {
+        background-color: $green-color;
+    }
+    label.form-check-label {
+        margin-top: 5px;
+    }
+}

@@ -1,0 +1,9 @@
+<div class="recipe-generator-container">
+  <h1>Welcome to recipe generator page. Choose the ingredients from below and find some delicious recipes</h1>
+  <div>
+    <app-ingredient-selection-section
+      [isLoggedIn]="isLoggedIn"
+      [selectedIngredients]="existingIngredientsForSearch"
+    ></app-ingredient-selection-section>
+  </div>
+</div>

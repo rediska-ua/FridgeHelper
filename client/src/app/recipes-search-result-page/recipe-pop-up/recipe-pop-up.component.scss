@@ -1,0 +1,186 @@
+@import "../../../assets/styles/variables";
+
+.recipe-pop-up {
+  max-width: 1000px;
+  min-width: 800px;
+  min-height: 800px;
+  padding: 25px 34px 34px;
+  font-family: "DM Sans", serif;
+  letter-spacing: normal;
+  background-color: #E9EAEC;
+
+  .pop-up-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    mat-icon.mat-icon.heart {
+      position: absolute;
+      top: 9px;
+      right: 40px;
+    }
+  }
+
+  .header-row {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    h2 {
+      margin: 0;
+      font-family: $font-family;
+      color: $popup-primary-color;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 30px;
+      letter-spacing: normal;
+    }
+
+  }
+  span.icon {
+    color: $popup-primary-color;
+    font-size: 28px;
+  }
+
+  .recipe-pop-up-cuisine, .recipe-pop-up-calories, .recipe-pop-up-match, .recipe-pop-up-time {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+
+    h4 {
+      margin: 0 !important;
+      font-size: 20px !important;
+    }
+
+    span {
+      margin-left: 10px;
+      font-size: 20px !important;
+    }
+  }
+
+  .recipe-pop-up-row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .recipe-pop-up-body {
+    margin-top: 30px;
+  }
+
+  .recipe-pop-up-mainInfo {
+    margin-left: 100px;
+    font-size: 20px !important;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .recipe-pop-up-fullLink {
+    margin-top: 20px;
+
+    mat-icon {
+      margin-left: 10px;
+    }
+  }
+
+  .recipe-pop-up-fullLink a {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: #00AEAE;
+    font-weight: bold;
+    text-decoration: none;
+    :focus {outline:0;}
+  }
+
+  .recipe-pop-up-description {
+    margin-top: 50px;
+    margin-bottom: 25px;
+  }
+
+  .recipe-pop-up-ingredients {
+    margin-bottom: 20px;
+  }
+
+  .recipe-pop-up-description-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      font-size: 18px;
+    }
+  }
+
+  .recipe-pop-up-tag-wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
+
+  .recipe-pop-up-tag {
+    span {
+      font-size: 14px;
+    }
+    border: 3px solid #7D7098;
+    border-radius: 25px;
+    text-align: center;
+    height: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .recipe-pop-up-diets {
+    margin-bottom: 20px;
+    margin-top: 15px;
+  }
+
+  .recipe-pop-up-diets, .recipe-pop-up-health {
+    h4 {
+      margin-bottom: 15px ;
+    }
+  }
+
+  .ingredient-tag-wrapper {
+    display: flex;
+    flex-direction: row;
+
+    div {
+      margin-right: 15px;
+    }
+  }
+
+  .ingredient-tag-unavailable {
+      span {
+        font-size: 14px;
+      }
+      border: 3px solid #ED7377;
+      border-radius: 25px;
+      text-align: center;
+      height: 100%;
+      padding: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+      cursor: pointer;
+  }
+
+  .ingredient-tag-available {
+    span {
+      font-size: 14px;
+    }
+    border: 3px solid #32C732;
+    border-radius: 25px;
+    text-align: center;
+    height: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+}

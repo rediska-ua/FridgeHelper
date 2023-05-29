@@ -1,0 +1,26 @@
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+  
+    > .col,
+    > [class*="col-"] {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+.mat-dialog-content {
+    max-height: 100% !important;
+}
+
+.container {
+  padding-top: 40px;
+  padding-left: 130px;
+  height: 63vh;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-top: min(40px, 20%);
+    padding-left: min(130px, 20%);
+  }
+}

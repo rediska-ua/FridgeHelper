@@ -1,0 +1,48 @@
+<div class="container">
+  <h2 class="title">Your statistics for month</h2>
+  <div class="date-group">
+    <div class="control active-btn" (click)="dateInputLeftArrowClick()">
+      <img
+        class="icon"
+        src="assets/icons/left-arrow-active.svg"
+        alt="Left arrow icon"
+      />
+    </div>
+    <div class="date-input" (click)="openDatePicker()">
+      <span class="label">{{ selectedMonth | date : "MMM y" }}</span>
+      <div class="date-picker">
+        <input
+          class="hidden"
+          matInput
+          [max]="maxDate"
+          [matDatepicker]="picker"
+          [(ngModel)]="selectedMonth"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon>
+            <img class="icon" src="assets/icons/calendar.svg" alt="Calendar" />
+          </mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker
+          #picker
+          startView="year"
+          (monthSelected)="monthSelected($event, picker)"
+        ></mat-datepicker>
+      </div>
+    </div>
+    <div
+      class="control {{ dateInputRightArrowState }}-btn"
+      (click)="dateInputRightArrowClick()"
+    >
+      <img
+        class="icon"
+        src="assets/icons/right-arrow-{{ dateInputRightArrowState }}.svg"
+        alt="Right arrow icon"
+      />
+    </div>
+  </div>
+  <app-bar-plot [classNameValue] = "'bar-day'" [viewModel]="barPlotVM"></app-bar-plot>
+  <div *ngIf="statisticsNotFound" class="text-danger list-unstyled mb-1">
+    No didn`t bought any products in this month
+  </div>
+</div>

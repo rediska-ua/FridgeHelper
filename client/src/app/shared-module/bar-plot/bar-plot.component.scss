@@ -1,0 +1,91 @@
+@import '/src/assets/styles/variables';
+
+.statistics {
+    margin-top: 40px;
+    font-family: $font-family;
+    height: 400px;
+}
+
+.chart {
+  align-items: flex-end;
+  border: 1px solid #0e1318;
+  display: flex;
+  flex: 1;
+  height: 200px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  margin-left: 25px;
+}
+
+.label {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.chart-group {
+  display: flex;
+  margin-top: 15px;
+  background-color: #E9EAEC;
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.chart-label {
+  color: #0e1318;
+}
+
+.y-axis {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  justify-content: space-between;
+}
+
+$shift: 18px;
+
+.bar-group {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: calc(var(--height) + $shift);
+  margin-right: 7px;
+
+  .x-val {
+    align-self: center;
+    position: relative;
+    top: $shift + 11px;
+    font-weight: 500;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  >.bar-month {
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #7D7098;
+    display: flex;
+    flex: 1;
+    position: relative;
+    top: $shift;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  >.bar-day {
+    background-color: #7D7098;
+    display: flex;
+    flex: 1;
+    position: relative;
+    top: $shift;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+}
